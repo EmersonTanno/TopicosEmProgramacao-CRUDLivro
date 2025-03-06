@@ -66,4 +66,9 @@ public class LivroController {
             return ResponseEntity.status(404).build();
         }
     }
+
+    @GetMapping("/status")
+    public List<Livro> buscarPorStatus(@RequestParam StatusReserva status) {
+        return livroService.buscarPorStatus(status);
+    }
 }

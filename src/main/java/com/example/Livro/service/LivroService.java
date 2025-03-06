@@ -48,4 +48,8 @@ public class LivroService {
         }).orElseThrow(() -> new RuntimeException("Livro não encontrado!"));
     }
 
+    public List<Livro> buscarPorStatus(StatusReserva statusReserva) {
+        return livroRepository.findByStatusReserva(statusReserva);
+    }
+
 }
