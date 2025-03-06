@@ -14,13 +14,19 @@ public class Livro {
     private int quantidadePaginas;
     private int anoPublicacao;
 
-    public Livro() {}
+    @Enumerated(EnumType.STRING)
+    private StatusReserva statusReserva;
 
-    public Livro(String titulo, String autor, int quantidadePaginas,int anoPublicacao) {
+    public Livro() {
+        this.statusReserva = StatusReserva.PENDENTE; // Status padrão ao criar um livro
+    }
+
+    public Livro(String titulo, String autor, int quantidadePaginas, int anoPublicacao, StatusReserva statusReserva) {
         this.titulo = titulo;
         this.autor = autor;
         this.quantidadePaginas = quantidadePaginas;
         this.anoPublicacao = anoPublicacao;
+        this.statusReserva = statusReserva;
     }
 
     public Long getId() {
@@ -43,6 +49,10 @@ public class Livro {
         return anoPublicacao;
     }
 
+    public StatusReserva getStatusReserva() {
+        return statusReserva;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -55,11 +65,15 @@ public class Livro {
         this.autor = autor;
     }
 
-    public void setQuantidadePaginas(int quantidadePaginas){
+    public void setQuantidadePaginas(int quantidadePaginas) {
         this.quantidadePaginas = quantidadePaginas;
     }
 
     public void setAnoPublicacao(int anoPublicacao) {
         this.anoPublicacao = anoPublicacao;
+    }
+
+    public void setStatusReserva(StatusReserva statusReserva) {
+        this.statusReserva = statusReserva;
     }
 }

@@ -1,6 +1,7 @@
 package com.example.Livro.service;
 
 import com.example.Livro.model.Livro;
+import com.example.Livro.model.StatusReserva;
 import com.example.Livro.repository.LivroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,4 +40,12 @@ public class LivroService {
     public void deletarLivro(Long id) {
         livroRepository.deleteById(id);
     }
+
+    public Livro atualizarStatus(Long id, StatusReserva status) {
+        return livroRepository.findById(id).map(livro -> {
+            livro.setStatusReserva(status);
+            return livroRepository.save(livro);
+        }).orElseThrow(() -> new RuntimeException("Livro não encontrado!"));
+    }
+
 }
