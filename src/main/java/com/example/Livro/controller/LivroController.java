@@ -32,6 +32,7 @@ public class LivroController {
 
     @PostMapping
     public ResponseEntity<Livro> criarLivro(@RequestBody Livro livro) {
+        livro.setStatusReserva(StatusReserva.PENDENTE);
         Livro novoLivro = livroService.salvarLivro(livro);
         return ResponseEntity.status(201).body(novoLivro);
     }
